@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://dbmxh64n3w5ju"]
+
+[ext_resource type="Texture2D" uid="uid://o7v4iwofrwtv" path="res://Mini Pixel Pack 3/UI objects/UI and Score Background.png" id="1_jsky0"]
+[ext_resource type="Texture2D" uid="uid://bvqd2ag0lqce5" path="res://Mini Pixel Pack 3/UI objects/Number_font (8 x 8).png" id="2_fyn84"]
+[ext_resource type="Texture2D" uid="uid://c5jdu1scwi4ks" path="res://Mini Pixel Pack 3/UI objects/UI and Score foreground.png" id="2_ug5xq"]
+[ext_resource type="PackedScene" uid="uid://wntw1xrwr1jv" path="res://score_counter.tscn" id="3_2yiq4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onw5v"]
+atlas = ExtResource("2_fyn84")
+region = Rect2(32, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0dbb"]
+atlas = ExtResource("2_fyn84")
+region = Rect2(32, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp1au"]
+atlas = ExtResource("2_fyn84")
+region = Rect2(32, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2hd4"]
+atlas = ExtResource("2_fyn84")
+region = Rect2(32, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1shk"]
+atlas = ExtResource("2_fyn84")
+region = Rect2(32, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iywpu"]
+atlas = ExtResource("2_fyn84")
+region = Rect2(32, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_saesm"]
+atlas = ExtResource("2_fyn84")
+region = Rect2(32, 8, 8, 8)
+
+[node name="UI" type="MarginContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ScoreCounter" parent="HBoxContainer" instance=ExtResource("3_2yiq4")]
+layout_mode = 2
+
+[node name="Digit7" type="TextureRect" parent="HBoxContainer/ScoreCounter"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_onw5v")
+
+[node name="Digit8" type="TextureRect" parent="HBoxContainer/ScoreCounter"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_e0dbb")
+
+[node name="Digit9" type="TextureRect" parent="HBoxContainer/ScoreCounter"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_bp1au")
+
+[node name="Digit10" type="TextureRect" parent="HBoxContainer/ScoreCounter"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_f2hd4")
+
+[node name="Digit11" type="TextureRect" parent="HBoxContainer/ScoreCounter"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_p1shk")
+
+[node name="Digit12" type="TextureRect" parent="HBoxContainer/ScoreCounter"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_iywpu")
+
+[node name="Digit13" type="TextureRect" parent="HBoxContainer/ScoreCounter"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_saesm")
+
+[node name="ShieldBar" type="TextureProgressBar" parent="HBoxContainer"]
+custom_minimum_size = Vector2(80, 16)
+layout_mode = 2
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_under = ExtResource("1_jsky0")
+texture_progress = ExtResource("2_ug5xq")

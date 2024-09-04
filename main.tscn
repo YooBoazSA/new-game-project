@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://wkfmstfnk7he"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_vgqes"]
+[ext_resource type="Texture2D" uid="uid://bmpmlvure35pw" path="res://Mini Pixel Pack 3/Space_BG (2 frames) (64 x 64).png" id="1_ybyjp"]
+[ext_resource type="PackedScene" uid="uid://bghbc1es2ms04" path="res://player.tscn" id="3_qs824"]
+[ext_resource type="PackedScene" uid="uid://dbmxh64n3w5ju" path="res://ui.tscn" id="4_0mo48"]
+[ext_resource type="Script" path="res://ui.gd" id="5_d3064"]
+
+[sub_resource type="Animation" id="Animation_ux0v2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 240, 320)]
+}
+
+[sub_resource type="Animation" id="Animation_5uvpp"]
+resource_name = "scroll"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 240, 320), Rect2(0, 0, 240, 320), Rect2(0, -64, 240, 320)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wo8vs"]
+_data = {
+"RESET": SubResource("Animation_ux0v2"),
+"scroll": SubResource("Animation_5uvpp")
+}
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_vgqes")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("1_ybyjp")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 240, 320)
+
+[node name="Player" parent="." instance=ExtResource("3_qs824")]
+position = Vector2(125, 277)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wo8vs")
+}
+autoplay = "scroll"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("4_0mo48")]
+script = ExtResource("5_d3064")
